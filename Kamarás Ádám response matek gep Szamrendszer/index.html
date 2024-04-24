@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <title>Online Számológép</title>
+  </head>
+  <body>
+    <h1 class="text-center">Online Számológép</h1>
+    <h3 class="text-center">
+      <span name="modeTXT" id="mode-text" class="mode-text">[Normál mód]</span>
+    </h3>
+    <h1 class="text-center text-danger display-3 my-5">
+      <span class="border out px-2" id="output" name="output">0</span>
+    </h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center my-3">
+          <span class="text-danger err-msg" name="err-msg"></span>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
+          <input
+            type="number"
+            name="numA"
+            id="numA"
+            class="form-control num-a my-2"
+            placeholder="A szám.."
+          />
+        </div>
+        <div class="col-md-2">
+          <select name="selOps" id="selOps" class="form-control my-2">
+            <option value="">+</option>
+            <option value="">-</option>
+            <option value="">*</option>
+            <option value="">/</option>
+          </select>
+          <select
+            name="sciops"
+            id="sciOps"
+            class="form-control my-2"
+            onchange="disBInput()"
+          >
+            <option value="0" title="százalék" selected>%</option>
+            <option value="1" title="hatványozás">x^</option>
+            <option value="2" title="négyzetgyök">√</option>
+            <option value="3" title="köbgyök">∛</option>
+            <option value="4" title="logaritmus">log</option>
+            <option value="5" title="színusz">sin</option>
+            <option value="6" title="koszinusz">cos</option>
+            <option value="7" title="tangens">tan</option>
+          </select>
+          <select
+            name="selNum"
+            id="selNum"
+            class="form-control my-2"
+            onchange="disaBInput()"
+          >
+            <option value="0">Bináris(2)</option>
+            <option value="1">Decimális(10)</option>
+            <option value="2">Hexadecimális(16)</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <input
+            type="number"
+            name="numB"
+            id="numB"
+            class="form-control num-b my-2"
+            placeholder="B szám.."
+          />
+        </div>
+        <div class="col-md-2">
+          <div class="btn-group my-2">
+            <button
+              type="button"
+              class="btn btn-info"
+              id="btnDef"
+              onclick="Calc()"
+            >
+              Számolás
+            </button>
+            <button type="button" class="btn btn-danger" onclick="calcReset()">
+              Törlés
+            </button>
+          </div>
+        </div>
+        <div class="col-md-6"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="from-group my-2 mx-2">
+          <input
+            type="checkbox"
+            name="cbsci"
+            id="cbSci"
+            class="form-ckeck-input"
+            onclick="swToSci()"
+          />
+          <label for="" class="form-ckeck-label">[Tudományos mód]</label>
+        </div>
+
+        <div class="from-group my-2 mx-2">
+          <input
+            type="checkbox"
+            name="szamcalc"
+            id="szamCalc"
+            class="form-ckeck-input"
+            onclick="swToNum()"
+          />
+          <label for="" class="form-ckeck-label">[Számrendszer mód]</label>
+        </div>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
+
+    <script type="text/javascript" src="main.js"></script>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css&quot; />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css&quot; />
+        <title>Document</title>
+    </head>
+    <body>
+        <h1 class="text-center">Online számológép</h1>
+        <h3 class="text-center"><span name="modeTXT" class="mode-text">[Normál mód]</span></h3>
+        <h1 class="text-center text-danger display-3 my-5"><span class="border px-2" name="out">0</span></h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center my-3">
+                    <span class="text-danger" name="errmsg"></span>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    <input class="form-control my-2" type="number" name="numA" placeholder="A szám.." />
+                </div>
+                <div class="col-md-2">
+                    <select name="selOps" id="selOps" class="form-control my-2">
+                        <option value="0" selected>+</option>
+                        <option value="1">-</option>
+                        <option value="2">*</option>
+                        <option value="3">/</option>
+                    </select>
+                    <select name="sciops" id="sciOps" class="form-control my-2">
+                        <option value="0" title="százalék" selected>%</option>
+                        <option value="1" title="hatványozás">x^</option>
+                        <option value="2" title="négyzetgyök">√</option>
+                        <option value="3" title="köbgyök">∛</option>
+                        <option value="4" title="logaritmus">log</option>
+                        <option value="5" title="színusz">sin</option>
+                        <option value="6" title="koszinus">cos</option>
+                        <option value="7" title="tangens">tan</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <input class="form-control my-2" type="number" name="numB" placeholder="A szám.." />
+                </div>
+                <div class="col-md-2">
+                    <div class="btn-group my-2">
+                        <button class="btn btn-info" id="btnDef" onclick="Calc()">Számolás</button>
+                        <button class="btn btn-danger" onclick="calcReset()">Törlés</button>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <div class="from-group my-3 mx-3">
+                    <input type="checkbox" name="cbsci" id="cbSci" class="form-check-input" onclick="swToSci()" />
+                    <label for="" class="form-check-label">[Tudományos mód]</label>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"></div>
+        </div>
+        <script type="text/javascript" src="main.js"></script>
+    </body>
+</html> -->
